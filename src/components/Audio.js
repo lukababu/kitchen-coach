@@ -21,7 +21,7 @@ class Audio extends Component {
     }
 
     timerCheck() {
-        if (!this.state.isCalibrated && this.state.time >= 10000) {
+        if (!this.state.isCalibrated && this.state.time >= 60000) {
             this.setState({ isCalibrated: true });
             //console.log("timer over");
         }
