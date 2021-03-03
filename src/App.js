@@ -1,30 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
-import { useMediaQuery } from "react-responsive";
-import Introduction from "./Begin/Introduction";
+
+import Splash from "./components/Splash";
+import SetTime from "./components/SetTime";
+import Armed from "./components/Armed";
+import Error from "./components/Error";
 
 function App() {
-    const isDesktopOrLaptop = useMediaQuery({
-        query: "(min-device-width: 1224px)",
-    });
-    const isTabletOrMobileDevice = useMediaQuery({
-        query: "(max-device-width: 1224px)",
-    });
+    const [startTime, SetStartTime] = useState(null);
+    const [endTime, SetEndTime] = useState(null);
 
     return (
-        <div className="App">
-            {isDesktopOrLaptop && (
-                <div className="desktop">
-                    <h1>
-                        You're useing a desktop
-                        <br />
-                        Please switch to a mobile device
-                    </h1>
-                </div>
-            )}
-
-            {isTabletOrMobileDevice && <Introduction />}
-        </div>
+        <BrowserRouter>
+            <div className="App">
+                <Switch>
+                    <Route path="/" component={Splash} exact />
+                    <Route
+                        path="/SetTime"
+                        render={(props) => (
+                            <SetTime
+                                {...props}
+                                startTime={startTime}
+                                endTime={endTime}
+                                SetStartTime={SetStartTime}
+                                SetEndTime={SetEndTime}
+                            />
+                        )}
+                    />
+                    <Route
+                        path="/Armed"
+                        render={(props) => (
+                            <Armed
+                                {...props}
+                                startTime={startTime}
+                                endTime={endTime}
+                            />
+                        )}
+                    />
+                    <Route component={Error} />
+                </Switch>
+            </div>
+        </BrowserRouter>
     );
 }
 

@@ -1,5 +1,14 @@
 # Getting Started with Create React App
 
+## Source
+
+https://www.twilio.com/blog/audio-visualisation-web-audio-api--react
+https://github.com/wojtekmaj/react-time-picker#readme
+https://stackoverflow.com/questions/10804042/calculate-time-difference-with-javascript/27484203
+https://www.golangprograms.com/how-to-create-simple-react-router-to-navigate-multiple-pages.html
+https://fontawesome.com/
+https://codepen.io/machi/pen/YymGzP
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

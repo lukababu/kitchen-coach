@@ -1,3 +1,7 @@
+export const STANDBY = "Standby";
+export const CALIBRATING = "Calibrating";
+export const ARMED = "Armed";
+
 export function timeDiffrence(startTime, endTime) {
     if (startTime === null || endTime === null) return -1;
 
@@ -25,15 +29,42 @@ export function timeDiffrence(startTime, endTime) {
     );
 }
 
-export function timeFormat2IntMinutes(inputTime) {
+export function timeInMinutes(inputTime) {
     let time = inputTime;
-    console.log("input: ", inputTime);
+    //console.log("input: ", inputTime);
 
     time = time.split(":");
 
     let timeParse = new Date(0, 0, 0, time[0], time[1], 0);
-    const minutes = timeParse.getTime();
-    console.log("minutes: ", minutes);
+    const hours = timeParse.getHours();
+    const minutes = timeParse.getMinutes() + hours * 60;
 
     return minutes;
+}
+
+export function timeReadable(inputTime) {
+    let time = inputTime;
+
+    time = time.split(":");
+
+    let timeParse = new Date(0, 0, 0, time[0], time[1], 0);
+    const hours = timeParse.getHours();
+    const minutes = timeParse.getMinutes();
+
+    return hours + " hour(s) " + " and " + minutes + " minute(s)";
+}
+
+export function tConvert(time) {
+    // Check correct time format and split into components
+    time = time
+        .toString()
+        .match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+    if (time.length > 1) {
+        // If time format correct
+        time = time.slice(1); // Remove full string match value
+        time[5] = +time[0] < 12 ? " AM" : " PM"; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(""); // return adjusted time or original string
 }

@@ -4,6 +4,7 @@ $body-color: white;
 @import "~bootstrap/scss/bootstrap";
 
 .App {
+    margin: 3rem 1rem;
     text-align: center;
 }
 
@@ -48,6 +49,11 @@ $body-color: white;
     justify-content: center;
     height: 100vh;
 }
+.screen-container {
+    & > * {
+        margin-bottom: 3rem;
+    }
+}
 
 .time-picker {
     background-color: white;
@@ -64,4 +70,72 @@ $body-color: white;
 
 .time-diffrence {
     margin-top: 3rem;
+}
+
+.link-from-splash {
+    width: 180px;
+    padding: 12px;
+    margin: 50px auto;
+    border: 1px solid #fff;
+    -webkit-animation: breathing 5s ease-out infinite normal;
+    animation: breathing 5s ease-out infinite normal;
+    font-size: 16px;
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 2px;
+    text-align: center;
+
+    @mixin keyframes($breathing) {
+        @-webkit-keyframes #{$breathing} {
+            0% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            25% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+        @keyframes #{$breathing} {
+            0% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            25% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+    }
+}
+
+.error {
+    color: red;
 }
