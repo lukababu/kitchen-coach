@@ -51,7 +51,6 @@ function Armed({ startTime, endTime }) {
             <p>The start time is {tConvert(startTime)}</p>
             <p>The end time is {tConvert(endTime)}</p>
             <p>Current time {currentTime}</p>
-            <p>Are we armed? {isActivated.current ? "Yes" : "No"}</p>
             {isActivated.current && (
                 <Audio status={status} SetStatus={SetStatus} />
             )}

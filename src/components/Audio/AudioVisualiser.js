@@ -7,6 +7,7 @@ class AudioVisualiser extends Component {
         super(props);
         this.canvas = React.createRef();
         this.maxVolume = React.createRef();
+        this.playingMessage = React.createRef(false);
     }
 
     componentDidUpdate() {
@@ -54,9 +55,13 @@ class AudioVisualiser extends Component {
 
             // Scare them off from the kitchen
             if (volumeMetric > this.maxVolume.current) {
-                if (shoutout.paused) {
+                if (!this.playingMessage.current) {
                     shoutout.play();
+                    this.playingMessage.current = true;
                 }
+                shoutout.onended = () => {
+                    this.playingMessage.current = false;
+                };
             }
 
             context.lineTo(x, y);

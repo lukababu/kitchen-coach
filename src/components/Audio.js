@@ -7,23 +7,17 @@ class Audio extends Component {
         super(props);
         this.state = {
             audio: null,
-            time: 0,
-            isOn: false,
-            start: 0,
             isCalibrated: false,
         };
         this.toggleMicrophone = this.toggleMicrophone.bind(this);
         this.isCalibrated = React.createRef();
     }
 
-    componentDidUpdate() {
-        this.timerCheck();
-    }
-
-    timerCheck() {
-        if (!this.state.isCalibrated && this.state.time >= 60000) {
-            this.setState({ isCalibrated: true });
-            //console.log("timer over");
+    calibrate() {
+        if (!this.state.isCalibrated) {
+            setInterval(() => {
+                this.setState({ isCalibrated: true });
+            }, 60000);
         }
     }
 
@@ -34,19 +28,8 @@ class Audio extends Component {
         });
         this.setState({ audio });
 
-        //Start calibration timer
-        this.setState({
-            time: this.state.time,
-            start: Date.now() - this.state.time,
-            isOn: true,
-        });
-        this.timer = setInterval(
-            () =>
-                this.setState({
-                    time: Date.now() - this.state.start,
-                }),
-            1
-        );
+        // Start calibration
+        this.calibrate();
     }
 
     stopMicrophone() {
@@ -54,9 +37,8 @@ class Audio extends Component {
         this.setState({ audio: null });
         this.props.SetStatus(STANDBY);
 
-        // Stop timer
-        this.setState({ isOn: false });
-        clearInterval(this.timer);
+        // Reset calibration
+        this.setState({ isCalibrated: false });
     }
 
     toggleMicrophone() {
