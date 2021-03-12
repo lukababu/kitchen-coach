@@ -1,6 +1,6 @@
 {
     "name": "kitchen-coach",
-    "version": "MAR.11.2021",
+    "version": "0.1.0",
     "private": true,
     "homepage": "https://kitchen-coach.luke.iremadze.com/",
     "dependencies": {
