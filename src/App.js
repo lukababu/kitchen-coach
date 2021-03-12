@@ -12,7 +12,7 @@ function App() {
     const [endTime, SetEndTime] = useState(null);
 
     return (
-        <BrowserRouter basename={"/kitchen_coach"}>
+        <BrowserRouter>
             <div className="App">
                 <Switch>
                     <Route path="/" component={Splash} exact />
