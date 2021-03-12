@@ -1,8 +1,8 @@
 {
     "name": "kitchen-coach",
-    "version": "0.1.0",
+    "version": "MAR.11.2021",
     "private": true,
-    "homepage": "https://luke.iremadze.com/kitchen_coach/",
+    "homepage": "https://kitchen-coach.luke.iremadze.com/",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.34",
         "@fortawesome/free-brands-svg-icons": "^5.15.2",
